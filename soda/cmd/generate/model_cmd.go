@@ -61,15 +61,15 @@ func Model(name string, opts map[string]interface{}, attributes []string) error 
 	}
 
 	attrs := make(map[string]struct{})
-  for _, def := range args[1:] {
-    a := newAttribute(def, &model)
-    f := a.Name.String()
-    if _, found := attrs[f]; found {
-      return fmt.Errorf("duplicated field \"%s\"", f)
-    }
-    attrs[f] = struct{}{}
-    model.addAttribute(a)
-  }
+	for _, def := range attributes {
+		a := newAttribute(def, &model)
+		f := a.Name.String()
+		if _, found := attrs[f]; found {
+			return fmt.Errorf("duplicated field \"%s\"", f)
+		}
+		attrs[f] = struct{}{}
+		model.addAttribute(a)
+	}
 
 	// Add a default UUID, if no custom ID is provided
 	model.addID()
