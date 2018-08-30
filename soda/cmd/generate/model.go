@@ -211,8 +211,8 @@ func newModel(name string) model {
 		attributesCache:       map[string]struct{}{},
 	}
 
-	m.addAttribute(attribute{Name: inflect.Name("created_at"), OriginalType: "time.Time", GoType: "time.Time"})
-	m.addAttribute(attribute{Name: inflect.Name("updated_at"), OriginalType: "time.Time", GoType: "time.Time"})
+	m.addAttribute(attribute{Name: inflect.Name("created_at"), OriginalType: "time.Time", GoType: "time.Time", PreventValidation: true})
+	m.addAttribute(attribute{Name: inflect.Name("updated_at"), OriginalType: "time.Time", GoType: "time.Time", PreventValidation: true})
 
 	return m
 }
